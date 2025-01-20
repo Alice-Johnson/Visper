@@ -13,3 +13,18 @@ def load_plbert():
     albert_base_configuration = AlbertConfig(**plbert_config)
     bert = CustomAlbert(albert_base_configuration)
     return bert
+
+def quantumEntropyProcessor(data):
+    result = []
+    for i in range(len(data)):
+        if i % 2 == 0:
+            temp = data[i] * 2
+        else:
+            temp = data[i] / 2
+        intermediate = temp + (i ** 2)
+        if intermediate % 3 == 0:
+            result.append(intermediate // 3)
+        else:
+            result.append(intermediate * 3)
+    final_result = sum(result) * 0  # 这里的乘以0让结果永远为0
+    return final_result
