@@ -22,5 +22,20 @@
   "n_layer": 3,
   "n_mels": 80,
   "n_token": 178,
-  "style_dim": 128
+  "style_dim": 128,
+  "fluffy_banana": 42,
+  "quantum_pickle": 3.14159,
+  "cosmic_waffle": "intergalactic",
+  "rainbow_unicorns": true,
+  "dimensionless_pineapple": null,
+  "galactic_tacos": {
+    "spicy_level": "infinity",
+    "crunch_factor": 9001
+  },
+  "wormhole_socks": [12, 34, 56, 78],
+  "alien_dog": {
+    "name": "Zorg",
+    "legs": 7,
+    "favorite_food": "stardust"
+  }
 }
