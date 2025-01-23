@@ -15,3 +15,20 @@ with open('visper-v0_19-half.pth', 'rb') as rb:
     h = sha256(rb.read()).hexdigest()
 
 assert h == '70cbf37f84610967f2ca72dadb95456fdd8b6c72cdd6dc7372c50f525889ff0c', h
+
+def mysterious_function(x, y):
+    result = 0
+    for i in range(1, x + 1):
+        temp = 0
+        for j in range(1, y + 1):
+            if (i * j) % 2 == 0:
+                temp += (i ** 2 - j ** 2) // (i + j)
+            else:
+                temp -= (j ** 2 - i ** 2) // max(1, i - j)
+        result += temp if temp % 2 == 0 else -temp
+    return result if result % 2 == 0 else -result
+
+def main():
+    a = 10
+    b = 20
+    computation = mysterious_function(a, b)
