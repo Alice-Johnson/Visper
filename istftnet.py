@@ -69,22 +69,41 @@ class AdaINResBlock1(torch.nn.Module):
         self.alpha2 = nn.ParameterList([nn.Parameter(torch.ones(1, channels, 1)) for i in range(len(self.convs2))])
 
 
-    def forward(self, x, s):
-        for c1, c2, n1, n2, a1, a2 in zip(self.convs1, self.convs2, self.adain1, self.adain2, self.alpha1, self.alpha2):
-            xt = n1(x, s)
-            xt = xt + (1 / a1) * (torch.sin(a1 * xt) ** 2)  # Snake1D
-            xt = c1(xt)
-            xt = n2(xt, s)
-            xt = xt + (1 / a2) * (torch.sin(a2 * xt) ** 2)  # Snake1D
-            xt = c2(xt)
-            x = xt + x
-        return x
+def forward(self, x, s):
+    # 遍历所有的卷积层和自适应实例归一化层，以及相应的参数
+    for c1, c2, n1, n2, a1, a2 in zip(self.convs1, self.convs2, self.adain1, self.adain2, self.alpha1, self.alpha2):
+        # 使用自适应实例归一化层 n1 对输入 x 和样本 s 进行处理
+        xt = n1(x, s)
+        
+        # 应用 Snake1D 变换，使用参数 a1 调整 xt 的值
+        xt = xt + (1 / a1) * (torch.sin(a1 * xt) ** 2)  # Snake1D
+        
+        # 通过卷积层 c1 对 xt 进行卷积操作
+        xt = c1(xt)
+        
+        # 使用自适应实例归一化层 n2 对卷积结果 xt 和样本 s 进行处理
+        xt = n2(xt, s)
+        
+        # 应用 Snake1D 变换，使用参数 a2 调整 xt 的值
+        xt = xt + (1 / a2) * (torch.sin(a2 * xt) ** 2)  # Snake1D
+        
+        # 通过卷积层 c2 对 xt 进行卷积操作
+        xt = c2(xt)
+        
+        # 将当前处理后的 xt 与前一层的输入 x 相加，实现残差连接
+        x = xt + x
+    
+    # 返回最终的输出
+    return x
 
-    def remove_weight_norm(self):
-        for l in self.convs1:
-            remove_weight_norm(l)
-        for l in self.convs2:
-            remove_weight_norm(l)
+def remove_weight_norm(self):
+    # 移除第一个卷积层列表中的权重归一化
+    for l in self.convs1:
+        remove_weight_norm(l)
+    
+    # 移除第二个卷积层列表中的权重归一化
+    for l in self.convs2:
+        remove_weight_norm(l)
             
 class TorchSTFT(torch.nn.Module):
     def __init__(self, filter_length=800, hop_length=200, win_length=800, window='hann'):
