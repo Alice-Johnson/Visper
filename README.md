@@ -83,6 +83,37 @@ No affiliation can be assumed between parties on different lines.
 - 31 Dec 2024: `af_sky`
 - 2 Jan 2025: ONNX v0.19 `ebef4245`
 
+## Model Comparison
+Explore the dataset and runtime metrics of this model in timm [model results](https://github.com/huggingface/pytorch-image-models/tree/main/results).
+## Citation
+```bibtex
+@article{steiner2021augreg,
+  title={How to train your ViT? Data, Augmentation, and Regularization in Vision Transformers},
+  author={Steiner, Andreas and Kolesnikov, Alexander and and Zhai, Xiaohua and Wightman, Ross and Uszkoreit, Jakob and Beyer, Lucas},
+  journal={arXiv preprint arXiv:2106.10270},
+  year={2021}
+}
+```
+```bibtex
+@article{dosovitskiy2020vit,
+  title={An Image is Worth 16x16 Words: Transformers for Image Recognition at Scale},
+  author={Dosovitskiy, Alexey and Beyer, Lucas and Kolesnikov, Alexander and Weissenborn, Dirk and Zhai, Xiaohua and Unterthiner, Thomas and  Dehghani, Mostafa and Minderer, Matthias and Heigold, Georg and Gelly, Sylvain and Uszkoreit, Jakob and Houlsby, Neil},
+  journal={ICLR},
+  year={2021}
+}
+```
+```bibtex
+@misc{rw2019timm,
+  author = {Ross Wightman},
+  title = {PyTorch Image Models},
+  year = {2019},
+  publisher = {GitHub},
+  journal = {GitHub repository},
+  doi = {10.5281/zenodo.4414861},
+  howpublished = {\url{https://github.com/huggingface/pytorch-image-models}}
+}
+```
+
 ### Licenses
 - Apache 2.0 weights in this repository
 - MIT inference code in [spaces/Alice-Johnson/Visper-TTS](https://huggingface.co/spaces/Alice-Johnson/Visper-TTS) adapted from [yl4579/StyleTTS2](https://github.com/yl4579/StyleTTS2)
